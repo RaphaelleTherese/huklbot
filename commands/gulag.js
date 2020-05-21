@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 const api = require('imageapi.js');
 
-const guild = bot.guilds.cache.get("456235847529005078"); // The server
+const guildId = "456235847529005078"; // The server
 const gulagRoleId = "504552560493854731";
 const gulagChannelId = "504553057560821780";
 
