@@ -90,14 +90,16 @@ bot.on('message', msg=>{
     }
 
     let cmd = "";
-
+    console.log("testosterone " + msg.author.id);
+    for (var key in dictGulag){
+        console.log(key);
+    }
+    
     if (msg.author.id in dictGulag){
-        console.log("-- reached --");
+        console.log(msg.autho);
         cmd = bot.commands.get("gulag");
         dictGulag = cmd.run(bot, msg, args, isAdmin, "pester", dictGulag);
-    } else{
-        console.log("welp")
-    }
+    } 
     // --- OFFICIAL COMMANDS ---
      let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
      switch (args[0]){
