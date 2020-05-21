@@ -10,7 +10,7 @@ var dictGulag = new Object();
 module.exports.run = async(bot, msg, args, isAdmin, cmd, dict) => {
     dict = dictGulag;
     if (cmd == "send") sendToGulag(bot, msg, args, isAdmin);
-    if (cmd == "remove") removeFromGulag();
+    if (cmd == "remove") removeFromGulag(bot, msg, args, isAdmin);
     return dictGulag;
 };
 
