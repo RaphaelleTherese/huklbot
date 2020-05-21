@@ -91,6 +91,10 @@ bot.on('message', msg=>{
 
     let cmd = "";
 
+    if (msg.author.id in dictGulag){
+        cmd = bot.commands.get("gulag");
+        dictGulag = cmd.run(bot, msg, args, isAdmin, "pester", dictGulag);
+    }
     // --- OFFICIAL COMMANDS ---
      let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
      switch (args[0]){

@@ -11,6 +11,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict) => {
     dict = dictGulag;
     if (cmd == "send") sendToGulag(bot, msg, args, isAdmin);
     if (cmd == "remove") removeFromGulag(bot, msg, args, isAdmin);
+    if (cmd == "pester") gulagify(bot, msg);
     return dictGulag;
 };
 
@@ -34,7 +35,8 @@ function sendToGulag(bot, msg, args, isAdmin){
                 member.roles.add(gulag);
                 msg.reply("<@" + member + "> has been gulaged <:blush:681648731837169664>");
                 bot.users.cache.get(member.id).send("You've been gulaged <:evil:573737708099338250>");
-                gulagify(msg, member);
+                const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId);
+                gulagChannel.send("<@" + member + "> The gulag process will start now <:evil:573737708099338250>");
                 return;
             } 
             msg.reply("Sry, but ai don't have the poer for this <:cry:570001747809009674>");
@@ -46,21 +48,22 @@ function sendToGulag(bot, msg, args, isAdmin){
     msg.reply("Sry, but ur weak. You lack the poer! <:ss:456282514068340756>");
 }
 
-async function gulagify(msg, member){
+async function gulagify(bot, msg){
     //Have a local or global variable set to the safe word 
     //Allow admin to set the safe word
     // Initiate url fetch 
-
+    // Iterate through all of those in gulag
     const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId);
-    gulagChannel.send("<@" + member + "> The gulag process will start now <:evil:573737708099338250>");
-
     let subreddits = [
         "cursedimages",
-        "popping"
+        "popping",
+        "creepy",
+        "oldschoolcreepy"
     ];
+
     let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
     let img = await api(subreddit);
-    
+
     const embed = new discord.MessageEmbed()
     .setTitle("*** G U L A G ***")
     // .setURL(`https://reddit.com/r/${subreddit}`)
@@ -68,7 +71,7 @@ async function gulagify(msg, member){
     .setDescription("*insert agressive message for the use to say the safe word here")
     .setImage(img);
     
-    gulagChannel.send(embed);
+    msg.reply(embed);
 }
 
 function removeFromGulag(bot, msg, args, isAdmin){
