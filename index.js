@@ -97,6 +97,7 @@ bot.on('message', msg=>{
         }
     }
 
+    let cmd = "";
     // --- OFFICIAL COMMANDS ---
      let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
      switch (args[0]){
@@ -120,11 +121,11 @@ bot.on('message', msg=>{
             displayProfile(msg, args);
             break;
         case "gulag":
-            let cmd = bot.commands.get(args[0]);
+            cmd = bot.commands.get(args[0]);
             dictGulag = cmd.run(bot, msg, args, isAdmin, "send", dictGulag);
             break;
         case "degulag":
-            let cmd = bot.commands.get("gulag");
+            cmd = bot.commands.get("gulag");
             dictGulag = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag);
             break;
         case "test":
