@@ -13,7 +13,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     safeWord = word;
     if (cmd == "send") sendToGulag(bot, msg, args, isAdmin);
     if (cmd == "remove") removeFromGulag(bot, msg, args, isAdmin);
-    if (cmd == "pester") gulagify(bot, msg);
+    if (cmd == "pester") gulagify(bot, msg, args);
     
     switch (args[0]){
         case "setsafeword":
@@ -55,7 +55,7 @@ function sendToGulag(bot, msg, args, isAdmin){
     msg.reply("Sry, but ur weak. You lack the poer! <:ss:456282514068340756>");
 }
 
-async function gulagify(bot, msg){
+async function gulagify(bot, msg, args){
     //Have a local or global variable set to the safe word 
     //Allow admin to set the safe word
     // Initiate url fetch 
