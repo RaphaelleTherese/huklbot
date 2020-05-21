@@ -14,6 +14,7 @@
   "author": "Me",
   "license": "UNLICENSED",
   "dependencies": {
-    "discord.js": "^12.0.2"
+    "discord.js": "^12.0.2",
+    "imageapi.js": "^1.0.3"
   }
 }
