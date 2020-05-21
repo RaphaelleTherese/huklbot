@@ -121,10 +121,11 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             let cmd = bot.commands.get(args[0]);
-            cmd.run(bot, msg, args, isAdmin, "send", dictGulag);
+            dictGulag = cmd.run(bot, msg, args, isAdmin, "send", dictGulag);
             break;
         case "degulag":
-            removeFromGulag(isAdmin, msg, args);
+            let cmd = bot.commands.get("gulag");
+            dictGulag = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag);
             break;
         case "test":
             msg.reply("This command is reserved for testing purposes. :)");

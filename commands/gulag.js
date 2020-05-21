@@ -11,6 +11,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict) => {
     dict = dictGulag;
     if (cmd == "send") sendToGulag(bot, msg, args, isAdmin);
     if (cmd == "remove") removeFromGulag();
+    return dictGulag;
 };
 
 function sendToGulag(bot, msg, args, isAdmin){
@@ -55,7 +56,7 @@ function gulagify(msg, member){
 
 }
 
-function removeFromGulag(isAdmin, msg, args){
+function removeFromGulag(bot, msg, args, isAdmin){
     if (isAdmin){
         const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
         const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
