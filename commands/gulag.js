@@ -63,7 +63,9 @@ async function gulagify(msg, member){
     
     const embed = new discord.MessageEmbed()
     .setTitle("*** G U L A G ***")
-    .setURL(`https://reddit.com/r/${subreddit}`)
+    // .setURL(`https://reddit.com/r/${subreddit}`)
+    .setColor('#b72025')
+    .setDescription("*insert agressive message for the use to say the safe word here")
     .setImage(img);
     
     gulagChannel.send(embed);
