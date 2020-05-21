@@ -65,7 +65,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 // Load commands
-bot.command = new discord.Collection();
+bot.command = new Discord.Collection();
 fs.readdir("./commands", (err, files) => {
     if (err) console.error(err);
     let jsfiles = files.filter(f => f.split(".").pop() === "js");
