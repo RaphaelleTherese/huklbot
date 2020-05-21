@@ -46,7 +46,7 @@ function sendToGulag(bot, msg, args, isAdmin){
     msg.reply("Sry, but ur weak. You lack the poer! <:ss:456282514068340756>");
 }
 
-function gulagify(msg, member){
+async function gulagify(msg, member){
     //Have a local or global variable set to the safe word 
     //Allow admin to set the safe word
     // Initiate url fetch 
