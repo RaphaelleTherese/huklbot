@@ -17,6 +17,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     
     switch (args[0]){
         case "setsafeword":
+            setSafeword(bot, msg, args, isAdmin, word);
         break;
     }
     return [dictGulag, safeWord];
@@ -121,6 +122,12 @@ function removeFromGulag(bot, msg, args, isAdmin){
     msg.reply("You must be an Admin to release the prisoner <:evil:573737708099338250>");
 }
 
+function setSafeWord(bot, msg, args, isAdmin){
+    if (isAdmin) {
+        safeWord = msg.content.substring(1 + 1 + args[0].toString().length + args[1].toString().length);
+        msg.reply(`The safe word has been set to ${safeWord}`);
+    }
+}
 module.exports.help = {
     name: "gulag"
 };
