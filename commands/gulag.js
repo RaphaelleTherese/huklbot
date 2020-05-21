@@ -82,7 +82,7 @@ async function gulagify(bot, msg, args){
             
             msg.reply(embed);
         } else{
-            removeFromGulag(bot, "<@!" + msg.author.id + ">", args, true);
+            removeFromGulag(bot, msg, args, true);
         }
     }
 }
@@ -105,7 +105,16 @@ function removeFromGulag(bot, msg, args, isAdmin){
                 }
                 msg.reply("They haven't even been gulaged yet <:what:456287851647336450>");
                 return;
-            } 
+            } else if(msg.author.id in dictGulag){
+                dictGulag[msg.author.id].forEach(function (roleId) {
+                    msg.author.roles.add(roleId);
+                });
+                msg.author.roles.remove(gulag);
+                delete dictGulag[msg.author.id];
+                msg.reply("<@" + msg.author.id + "> has been de-gulaged <:guilt:570001778372771853>");
+                bot.users.cache.get(msg.author.id).send("You've been de-gulaged :pensive:");
+                return;
+            }
         msg.reply("You have to provide a valid member to send to gulag! <:ss:456282514068340756>");
         return;
     }
