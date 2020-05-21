@@ -38,7 +38,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 // const token = 'NDMzNDc5OTY0MDk3MTE4MjA4.Xn25-A.AejV_FMOQtZCZegt9OKK2bbq48w';
 const PREFIX = "~";
-const imageapi = require("imageapi.js");
 
 
 const huklbot = "<@433479964097118208>"; // Huklbot's role
@@ -207,27 +206,6 @@ function gulagify(msg, member){
     const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId);
     gulagChannel.send("<@" + member + "> The gulag process will start now <:evil:573737708099338250>");
 
-    module.exports={
-        name: "huklbot", 
-        description: "Indescribable", 
-        category: "cool", 
-        run: async(bot, msg, args) => {
-            let subreddits = [
-                "cursedimages",
-                "popping"
-            ]
-            let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)]
-            console.log(subreddit);
-            let img = await api(subreddit);
-            console.log(subreddit);
-    
-            const embed = new Discord.MessageEmbed()
-            .setTitle('*** GULAG ***')
-            .setColor('#b72025')
-            .setURL(`https://reddit.com/r/${subreddit}`);
-            msg.channel.send(embed);
-        }
-    }
 }
 
 function removeFromGulag(isAdmin, msg, args){
@@ -255,4 +233,5 @@ function removeFromGulag(isAdmin, msg, args){
     msg.reply("You must be an Admin to release the prisoner <:evil:573737708099338250>");
 }
 
-bot.login(process.env.token);
+// bot.login(process.env.token);
+bot.login(token);
