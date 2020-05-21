@@ -92,6 +92,7 @@ bot.on('message', msg=>{
     let cmd = "";
 
     if (msg.author.id in dictGulag){
+        console.log("-- reached --");
         cmd = bot.commands.get("gulag");
         dictGulag = cmd.run(bot, msg, args, isAdmin, "pester", dictGulag);
     }
