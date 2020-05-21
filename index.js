@@ -122,7 +122,7 @@ bot.on('message', msg=>{
             cmd = bot.commands.get(args[0]);
             var results = cmd.run(bot, msg, args, isAdmin, "send", dictGulag, safeWord);
             dictGulag = results[0];
-            safeWord = results[0];
+            safeWord = results[1];
             break;
         case "degulag":
             cmd = bot.commands.get("gulag");
