@@ -54,6 +54,19 @@ function gulagify(msg, member){
     const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId);
     gulagChannel.send("<@" + member + "> The gulag process will start now <:evil:573737708099338250>");
 
+    let subreddits = [
+        "cursedimages",
+        "popping"
+    ];
+    let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
+    let img = await api(subreddit);
+    
+    const embed = new discord.MessageEmbed()
+    .setTitle("*** G U L A G ***")
+    .setURL(`https://reddit.com/r/${subreddit}`)
+    .setImage(img);
+    
+    msg.channel.send(embed);
 }
 
 function removeFromGulag(bot, msg, args, isAdmin){

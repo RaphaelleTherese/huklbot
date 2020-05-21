@@ -1,10 +1,6 @@
 /*
-
 Author: Raphaelle Guinanao
-Last Updated: May 18, 2020
-
-node . to START
-ctrl + c to STOP 
+Last Updated: May 20, 2020
 
 *IDEAS
 ~insult: insults a random person on the server with a random insult
@@ -21,16 +17,12 @@ Turd Burglar
 Baby Snatcher
 etc
 
-bark: replies to the 'nearest' person with barks WOOF WOOF WOOF
-
 ------ USER @s -----
 <@433479964097118208> = HuklBot
 <@282624296637956108> = Huklpopz [Me]
-<@403239775290523680> = LastMann
 
 Notes:
 guild.roles.cache.forEach(role => console.log(role.name, role.id)) -- Retrieve all roles in the server
-
 */
 
 /*----- GLOBAL VARIABLES-----*/
@@ -98,6 +90,7 @@ bot.on('message', msg=>{
     }
 
     let cmd = "";
+
     // --- OFFICIAL COMMANDS ---
      let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
      switch (args[0]){
@@ -183,31 +176,6 @@ function displayProfile(msg, args){
         .setThumbnail(msg.author.avatarURL)
         .addField('Profile', msg.author.username); //.fetchProfile
     msg.channel.send(embed);
-}
-
-function removeFromGulag(isAdmin, msg, args){
-    if (isAdmin){
-        const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
-        const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
-            if (args.length > 1 && args[1].toString().includes("<@") && (args[1].length == 21 || args[1].length == 22)){ 
-                var member = msg.mentions.members.first();
-                if (member.id in dictGulag){
-                    dictGulag[member.id].forEach(function (roleId) {
-                        member.roles.add(roleId);
-                    });
-                    member.roles.remove(gulag);
-                    delete dictGulag[member.id];
-                    msg.reply("<@" + member + "> has been de-gulaged <:guilt:570001778372771853>");
-                    bot.users.cache.get(member.id).send("You've been de-gulaged :pensive:");
-                    return;
-                }
-                msg.reply("They haven't even been gulaged yet <:what:456287851647336450>");
-                return;
-            } 
-        msg.reply("You have to provide a valid member to send to gulag! <:ss:456282514068340756>");
-        return;
-    }
-    msg.reply("You must be an Admin to release the prisoner <:evil:573737708099338250>");
 }
 
 bot.login(process.env.token);
