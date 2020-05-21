@@ -66,7 +66,7 @@ async function gulagify(msg, member){
     .setURL(`https://reddit.com/r/${subreddit}`)
     .setImage(img);
     
-    msg.channel.send(embed);
+    gulagChannel.send(embed);
 }
 
 function removeFromGulag(bot, msg, args, isAdmin){
