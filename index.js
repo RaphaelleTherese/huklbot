@@ -39,21 +39,7 @@ const bot = new Discord.Client();
 // const token = 'NDMzNDc5OTY0MDk3MTE4MjA4.Xn25-A.AejV_FMOQtZCZegt9OKK2bbq48w';
 const PREFIX = "~";
 const imageapi = require("imageapi.js");
-module.exports={
-    name: "huklbot", 
-    description: "Indescribable", 
-    category: "cool", 
-    run: async(bot, message, args) => {
-        let subreddits = [
-            "cursedimages",
-            "popping"
-        ]
-        let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)]
-        console.log(subreddit);
-        let img = await api(subreddit);
-        console.log(subreddit);
-    }
-}
+
 
 const huklbot = "<@433479964097118208>"; // Huklbot's role
 const guild = bot.guilds.cache.get("456235847529005078"); // The server
@@ -220,6 +206,28 @@ function gulagify(msg, member){
 
     const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId);
     gulagChannel.send("<@" + member + "> The gulag process will start now <:evil:573737708099338250>");
+
+    module.exports={
+        name: "huklbot", 
+        description: "Indescribable", 
+        category: "cool", 
+        run: async(bot, msg, args) => {
+            let subreddits = [
+                "cursedimages",
+                "popping"
+            ]
+            let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)]
+            console.log(subreddit);
+            let img = await api(subreddit);
+            console.log(subreddit);
+    
+            const embed = new Discord.MessageEmbed()
+            .setTitle('*** GULAG ***')
+            .setColor('#b72025')
+            .setURL(`https://reddit.com/r/${subreddit}`);
+            msg.channel.send(embed);
+        }
+    }
 }
 
 function removeFromGulag(isAdmin, msg, args){
