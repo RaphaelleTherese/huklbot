@@ -65,7 +65,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 // Load commands
-bot.command = new Discord.Collection();
+bot.commands = new Discord.Collection();
 fs.readdir("./commands", (err, files) => {
     if (err) console.error(err);
     let jsfiles = files.filter(f => f.split(".").pop() === "js");
@@ -76,7 +76,7 @@ fs.readdir("./commands", (err, files) => {
     jsfiles.forEach((f, i) => {
         let props = require(`./commands/${f}`);
         console.log(`${i + 1}: ${f} loaded!`);
-        // bot.commands.set(props.help.name, props);
+        bot.commands.set(props.help.name, props);
     });
 });
 
@@ -120,7 +120,8 @@ bot.on('message', msg=>{
             displayProfile(msg, args);
             break;
         case "gulag":
-            sendToGulag(isAdmin, msg, args);
+            let cmd = bot.commands.get(args[0]);
+            cmd.run(bot, msg, args);
             break;
         case "degulag":
             removeFromGulag(isAdmin, msg, args);
