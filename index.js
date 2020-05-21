@@ -36,6 +36,7 @@ guild.roles.cache.forEach(role => console.log(role.name, role.id)) -- Retrieve a
 /*----- GLOBAL VARIABLES-----*/
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const fs = require("fs");
 // const token = 'NDMzNDc5OTY0MDk3MTE4MjA4.Xn25-A.AejV_FMOQtZCZegt9OKK2bbq48w';
 const PREFIX = "~";
 
@@ -63,6 +64,23 @@ bot.on('guildMemberAdd', member => {
     channel.send(addIntro[randInt] + `${member}`);
 });
 
+// Load commands
+bot.command = new discord.Collection();
+fs.readdir("./commands", (err, files) => {
+    if (err) console.error(err);
+    let jsfiles = files.filter(f => f.split(".").pop() === "js");
+
+    if (jsfiles.length <= 0) return console.error("There are no commands to load");
+
+    console.log(`Loading ${jsfiles.length} commands`);
+    jsfiles.forEach((f, i) => {
+        let props = require(`./commands/${f}`);
+        console.log(`${i + 1}: ${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+    });
+});
+
+// Message event
 bot.on('message', msg=>{
      console.log(msg.author.username + ": " + msg.content.toLowerCase());
      var isAdmin = checkAdmin(msg);
@@ -233,5 +251,5 @@ function removeFromGulag(isAdmin, msg, args){
     msg.reply("You must be an Admin to release the prisoner <:evil:573737708099338250>");
 }
 
-// bot.login(process.env.token);
-bot.login(token);
+bot.login(process.env.token);
+// bot.login(token);
