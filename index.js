@@ -121,7 +121,7 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             let cmd = bot.commands.get(args[0]);
-            cmd.run(isAdmin, bot, msg, args);
+            cmd.run(bot, msg, args, isAdmin, "send", dictGulag);
             break;
         case "degulag":
             removeFromGulag(isAdmin, msg, args);
