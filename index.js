@@ -95,6 +95,8 @@ bot.on('message', msg=>{
         console.log("-- reached --");
         cmd = bot.commands.get("gulag");
         dictGulag = cmd.run(bot, msg, args, isAdmin, "pester", dictGulag);
+    } else{
+        console.log("welp")
     }
     // --- OFFICIAL COMMANDS ---
      let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
