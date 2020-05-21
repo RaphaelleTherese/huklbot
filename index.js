@@ -45,6 +45,8 @@ bot.on('ready', () =>{
 
 var recentAuthor = "";
 var dictGulag = new Object();
+var safeWord = "safe word";
+
 bot.on('guildMemberAdd', member => {
     // Send the message to a designated channel on a server:
     const channel = member.guild.channels.cache.find(ch => ch.name === 'lobby');
@@ -94,9 +96,9 @@ bot.on('message', msg=>{
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
     cmd = bot.commands.get("gulag");
-    dictGulag = cmd.run(bot, msg, args, isAdmin, "pester", dictGulag);
+    cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
 
-     switch (args[0]){
+    switch (args[0]){
          case "help":
              help(msg, args);
              break;
@@ -118,11 +120,13 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             cmd = bot.commands.get(args[0]);
-            dictGulag = cmd.run(bot, msg, args, isAdmin, "send", dictGulag);
+            var results = cmd.run(bot, msg, args, isAdmin, "send", dictGulag, safeWord)[0];
+            dictGulag = results[0];
             break;
         case "degulag":
             cmd = bot.commands.get("gulag");
-            dictGulag = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag);
+            var results = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag, safeWord)[0];
+            dictGulag = results[0];
             break;
         case "test":
             msg.reply("This command is reserved for testing purposes. :)");

@@ -6,13 +6,20 @@ const gulagRoleId = "504552560493854731";
 const gulagChannelId = "504553057560821780";
 
 var dictGulag = new Object();
+var safeWord = "safeWord";
 
-module.exports.run = async(bot, msg, args, isAdmin, cmd, dict) => {
+module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     dict = dictGulag;
+    safeWord = word;
     if (cmd == "send") sendToGulag(bot, msg, args, isAdmin);
     if (cmd == "remove") removeFromGulag(bot, msg, args, isAdmin);
     if (cmd == "pester") gulagify(bot, msg);
-    return dictGulag;
+    
+    switch (args[0]){
+        case "setsafeword":
+        break;
+    }
+    return [dictGulag, safeWord];
 };
 
 function sendToGulag(bot, msg, args, isAdmin){
@@ -58,20 +65,25 @@ async function gulagify(bot, msg){
         "cursedimages",
         "popping",
         "creepy",
-        "oldschoolcreepy"
+        "oldschoolcreepy",
+        "yaoi"
     ];
     if (msg.author.id in dictGulag){
-        let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
-        let img = await api(subreddit);
-    
-        const embed = new discord.MessageEmbed()
-        .setTitle("*** G U L A G ***")
-        // .setURL(`https://reddit.com/r/${subreddit}`)
-        .setColor('#b72025')
-        .setDescription("*insert agressive message for the use to say the safe word here")
-        .setImage(img);
+        if(!msg.contains(safeWord)){
+            let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
+            let img = await api(subreddit);
         
-        msg.reply(embed);
+            const embed = new discord.MessageEmbed()
+            .setTitle("*** G U L A G ***")
+            // .setURL(`https://reddit.com/r/${subreddit}`)
+            .setColor('#b72025')
+            .setDescription(`*insert agressive message for the use to say the ${safeWord} here`)
+            .setImage(img);
+            
+            msg.reply(embed);
+        } else{
+            removeFromGulag(bot, "<@!" + msg.author.id + ">", args, true);
+        }
     }
 }
 
