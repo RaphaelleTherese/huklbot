@@ -69,7 +69,7 @@ async function gulagify(bot, msg){
         "yaoi"
     ];
     if (msg.author.id in dictGulag){
-        if(!msg.contains(safeWord)){
+        if(!msg.includes(safeWord)){
             let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
             let img = await api(subreddit);
         
