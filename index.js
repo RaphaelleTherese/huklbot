@@ -89,13 +89,13 @@ bot.on('message', msg=>{
         }
     }
 
+    // --- OFFICIAL COMMANDS ---
     let cmd = "";
-    
+    let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
+
     cmd = bot.commands.get("gulag");
     dictGulag = cmd.run(bot, msg, args, isAdmin, "pester", dictGulag);
-    
-    // --- OFFICIAL COMMANDS ---
-     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
+
      switch (args[0]){
          case "help":
              help(msg, args);
