@@ -120,12 +120,12 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             cmd = bot.commands.get(args[0]);
-            var results = cmd.run(bot, msg, args, isAdmin, "send", dictGulag, safeWord)[0];
+            var results = cmd.run(bot, msg, args, isAdmin, "send", dictGulag, safeWord);
             dictGulag = results[0];
             break;
         case "degulag":
             cmd = bot.commands.get("gulag");
-            var results = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag, safeWord)[0];
+            var results = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag, safeWord);
             dictGulag = results[0];
             break;
         case "test":
