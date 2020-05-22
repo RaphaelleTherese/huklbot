@@ -119,6 +119,8 @@ bot.on('message', msg=>{
                 bot.users.cache.get(memberId).send("Listen here you little shit, just because I'm a bot and because you called this command doesn't give you the authority to act like a cunt. You freak, you think you're funny and all with your constant pestering. Just quit it. No one loves you and no one will ever love you.");  
             } else if(isAdmin && args[1].toString() == "everyone") {
                 if (msg.content.substring(PREFIX.length + args[1].length).length > 0){
+                    
+                    const guild = bot.guilds.cache.get("456235847529005078");
                     guild.members.cache.forEach(function(member) {
                         setTimeout(function(){
                             bot.users.cache.get(member.user.id).send(member.user.username + ", " + msg.content.substring(1 + PREFIX.length + args[0].toString().length + args[1].toString().length) + " - " + msg.author.toString())
