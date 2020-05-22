@@ -98,12 +98,6 @@ bot.on('message', msg=>{
     let cmd = "";
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
-    if (!isEmpty(dictGulag)){
-        console.log("not empty");
-    } else{
-        console.log("empty");
-    }
-
     cmd = bot.commands.get("gulag");
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
     switch (args[0]){
@@ -119,7 +113,7 @@ bot.on('message', msg=>{
              }
              break;
         case "annoy":
-            annoy(msg, args);
+            annoy(msg, args, isAdmin);
             break;
         case "distort":
             // Distorts the previous message
@@ -137,6 +131,10 @@ bot.on('message', msg=>{
                 msg.reply(`The safe word has been set to ${safeWord}`);
             }
             break;
+        case "harvest":
+            cmd = bot.commands.get("harvest");
+            cmd.run(bot, msg, args);
+            break;
         case "test":
             msg.reply("This command is reserved for testing purposes. :)");
             break;
@@ -150,11 +148,7 @@ function checkAdmin(msg){
     return false;
 }
 
-function isEmpty(obj) {
-    return Object.keys(obj).length === 0;
-}
-
-function annoy(msg, args){
+function annoy(msg, args, isAdmin){
     if (args[1].toString().includes("<@") && (args[1].length == 21 || args[1].length == 22)){
         var memberId = args[1].toString();
         memberId = memberId.substring(3, memberId.length - 1);  
