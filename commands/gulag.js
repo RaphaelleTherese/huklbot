@@ -22,7 +22,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
                 removeFromGulag(bot, msg, args, isAdmin);
                 break;
             case "safeword":
-                setSafeWord(bot, msg, args, isAdmin);
+                setSafeWord(bot, msg, args, isAdmin, word);
                 break;
             default:
                 msg.reply("What do you want me to do with gulag? `~gulag [send | release | setsafeword]`");
@@ -66,7 +66,7 @@ function sendToGulag(bot, msg, args, isAdmin){
     msg.reply("Sry, but ur weak. You lack the poer! <:ss:456282514068340756>");
 }
 
-async function gulagify(bot, msg, args){
+async function gulagify(bot, msg, args, word){
     //Have a local or global variable set to the safe word 
     //Allow admin to set the safe word
     // Initiate url fetch 
@@ -79,7 +79,7 @@ async function gulagify(bot, msg, args){
         "oldschoolcreepy"
     ];
     if (msg.author.id in dictGulag){
-        if(!msg.content.includes(safeWord)){
+        if(!msg.content.includes(word)){
             let subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
             let img = await api(subreddit);
         
@@ -87,7 +87,7 @@ async function gulagify(bot, msg, args){
             .setTitle("*** G U L A G ***")
             // .setURL(`https://reddit.com/r/${subreddit}`)
             .setColor('#b72025')
-            .setDescription(`*insert agressive message for the use to say the ${safeWord} here`)
+            .setDescription(`*insert agressive message for the use to say ${word} here`)
             .setImage(img);
             
             msg.reply(embed);
