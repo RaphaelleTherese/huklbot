@@ -40,7 +40,7 @@ const gulagChannelId = "504553057560821780";
 
 // Hey, is this thing on? 
 bot.on('ready', () =>{
-    console.log("Teehee, I'm hewe! UwU");
+    console.log("---------- Teehee, I'm hewe! UwU ----------");
 });
 
 var recentAuthor = "";
@@ -120,14 +120,9 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             cmd = bot.commands.get(args[0]);
-            var results = cmd.run(bot, msg, args, isAdmin, "send", dictGulag, safeWord);
+            var results = cmd.run(bot, msg, args, isAdmin, "", dictGulag, safeWord);
             dictGulag = results[0];
             safeWord = results[1];
-            break;
-        case "degulag":
-            cmd = bot.commands.get("gulag");
-            var results = cmd.run(bot, msg, args, isAdmin, "remove", dictGulag, safeWord);
-            dictGulag = results[0];
             break;
         case "test":
             msg.reply("This command is reserved for testing purposes. :)");

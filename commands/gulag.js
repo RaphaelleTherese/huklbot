@@ -11,11 +11,15 @@ var safeWord = "safeWord";
 module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     dict = dictGulag;
     safeWord = word;
-    if (cmd == "send") sendToGulag(bot, msg, args, isAdmin);
-    if (cmd == "remove") removeFromGulag(bot, msg, args, isAdmin);
     if (cmd == "pester") gulagify(bot, msg, args);
     
     switch (args[0]){
+        case "send":
+            sendToGulag(bot, msg, args, isAdmin);
+            break;
+        case "remove":
+            removeFromGulag(bot, msg, args, isAdmin);
+            break;
         case "setsafeword":
             setSafeWord(bot, msg, args, isAdmin);
         break;
@@ -66,8 +70,7 @@ async function gulagify(bot, msg, args){
         "cursedimages",
         "popping",
         "creepy",
-        "oldschoolcreepy",
-        "yaoi"
+        "oldschoolcreepy"
     ];
     if (msg.author.id in dictGulag){
         if(!msg.content.includes(safeWord)){
