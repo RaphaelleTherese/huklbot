@@ -25,7 +25,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
                 setSafeWord(bot, msg, args, isAdmin, word);
                 break;
             default:
-                msg.reply("What do you want me to do with gulag? `~gulag [send | release | setsafeword]`");
+                msg.reply("What do you want me to do with gulag? `~gulag [send | release | safeword]`");
                 break;
         }
     }
