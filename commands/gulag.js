@@ -11,21 +11,23 @@ var safeWord = "safeWord";
 module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     dict = dictGulag;
     safeWord = word;
-    if (cmd == "pester") gulagify(bot, msg, args);
-    
-    switch (args[0]){
-        case "send":
-            sendToGulag(bot, msg, args, isAdmin);
-            break;
-        case "remove":
-            removeFromGulag(bot, msg, args, isAdmin);
-            break;
-        case "setsafeword":
-            setSafeWord(bot, msg, args, isAdmin);
-            break;
-        default:
-            msg.reply("What do you want me to do with gulag? `~gulag [send | remove | setsafeword]`");
-            break;
+    if (cmd == "pester") {
+        gulagify(bot, msg, args);
+    } else{
+        switch (args[0]){
+            case "send":
+                sendToGulag(bot, msg, args, isAdmin);
+                break;
+            case "remove":
+                removeFromGulag(bot, msg, args, isAdmin);
+                break;
+            case "setsafeword":
+                setSafeWord(bot, msg, args, isAdmin);
+                break;
+            default:
+                msg.reply("What do you want me to do with gulag? `~gulag [send | remove | setsafeword]`");
+                break;
+        }
     }
     return [dictGulag, safeWord];
 };
