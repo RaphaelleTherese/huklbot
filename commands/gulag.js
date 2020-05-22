@@ -36,7 +36,7 @@ function sendToGulag(bot, msg, args, isAdmin){
     if (isAdmin){
         const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
         const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
-        if (args.length > 1 && args[1].toString().includes("<@") && (args[1].length == 21 || args[1].length == 22)){
+        if (args.length > 1 && args[2].toString().includes("<@") && (args[2].length == 21 || args[2].length == 22)){
             var member = msg.mentions.members.first();
             var prevRoles = [""];
 
@@ -100,7 +100,7 @@ function removeFromGulag(bot, msg, args, isAdmin){
     if (isAdmin){
         const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
         const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
-            if (args.length > 1 && args[1].toString().includes("<@") && (args[1].length == 21 || args[1].length == 22)){ 
+            if (args.length > 1 && args[2].toString().includes("<@") && (args[2].length == 21 || args[2].length == 22)){ 
                 var member = msg.mentions.members.first();
                 if (member.id in dictGulag){
                     dictGulag[member.id].forEach(function (roleId) {
