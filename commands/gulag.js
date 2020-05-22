@@ -29,7 +29,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
                 break;
         }
     }
-    console.log(">IN: " + safeWord);
+    console.log(">BETWEEN: " + safeWord);
     return [dictGulag, safeWord];
 };
 

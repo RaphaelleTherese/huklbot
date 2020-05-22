@@ -99,6 +99,7 @@ bot.on('message', msg=>{
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
     cmd = bot.commands.get("gulag");
+    console.log(">IN 1: " + safeWord);
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
 
     switch (args[0]){
@@ -123,6 +124,7 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             cmd = bot.commands.get(args[0]);
+            console.log(">IN 2: " + safeWord);
             var results = cmd.run(bot, msg, args, isAdmin, "", dictGulag, safeWord);
             dictGulag = results[0];
             console.log(">OUT: " + safeWord);
