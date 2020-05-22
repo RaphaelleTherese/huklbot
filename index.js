@@ -79,9 +79,9 @@ bot.on('message', msg=>{
      console.log(msg.author.username + ": " + msg.content.toLowerCase());
      var isAdmin = checkAdmin(msg);
     
-     if (!msg.author.toString().includes(huklbot))
+     if (msg.author.toString().includes(huklbot))
         return;
-        
+
      if(!msg.author.toString().includes("<@282624296637956108>"))
         recentAuthor = msg.author.toString(); // Retrieves the most recent 'author' of a message.
 

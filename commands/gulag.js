@@ -22,10 +22,10 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
             break;
         case "setsafeword":
             setSafeWord(bot, msg, args, isAdmin);
-        break;
+            break;
         default:
             msg.reply("What do you want me to do with gulag? `~gulag [send | remove | setsafeword]`");
-        break;
+            break;
     }
     return [dictGulag, safeWord];
 };
