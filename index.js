@@ -113,7 +113,21 @@ bot.on('message', msg=>{
              }
              break;
         case "annoy":
-            annoy(msg, args, isAdmin);
+            if (args[1].toString().includes("<@") && (args[1].length == 21 || args[1].length == 22)){
+                var memberId = args[1].toString();
+                memberId = memberId.substring(3, memberId.length - 1);  
+                bot.users.cache.get(memberId).send("Listen here you little shit, just because I'm a bot and because you called this command doesn't give you the authority to act like a cunt. You freak, you think you're funny and all with your constant pestering. Just quit it. No one loves you and no one will ever love you.");  
+            } else if(isAdmin && args[1].toString() == "everyone") {
+                if (msg.content.substring(PREFIX.length + args[1].length).length > 0){
+                    guild.members.cache.forEach(function(member) {
+                        setTimeout(function(){
+                            bot.users.cache.get(member.user.id).send(member.user.username + ", " + msg.content.substring(1 + PREFIX.length + args[0].toString().length + args[1].toString().length) + " - " + msg.author.toString())
+                        }, 500); 
+                    });
+                }
+                msg.reply(" I messaged them all, are you happy now? >:V");
+                msg.channel.send("Do you feel proud with what you've done? :unamused:");
+            }
             break;
         case "distort":
             // Distorts the previous message
@@ -146,24 +160,6 @@ function checkAdmin(msg){
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
         return msg.member.roles.cache.some(r=>["Admin"].includes(r.name));
     return false;
-}
-
-function annoy(msg, args, isAdmin){
-    if (args[1].toString().includes("<@") && (args[1].length == 21 || args[1].length == 22)){
-        var memberId = args[1].toString();
-        memberId = memberId.substring(3, memberId.length - 1);  
-        bot.users.cache.get(memberId).send("Listen here you little shit, just because I'm a bot and because you called this command doesn't give you the authority to act like a cunt. You freak, you think you're funny and all with your constant pestering. Just quit it. No one loves you and no one will ever love you.");  
-    } else if(isAdmin && args[1].toString() == "everyone") {
-        if (msg.content.substring(PREFIX.length + args[1].length).length > 0){
-            guild.members.cache.forEach(function(member) {
-                setTimeout(function(){
-                    bot.users.cache.get(member.user.id).send(member.user.username + ", " + msg.content.substring(1 + PREFIX.length + args[0].toString().length + args[1].toString().length) + " - " + msg.author.toString())
-                }, 500); 
-            });
-        }
-        msg.reply(" I messaged them all, are you happy now? >:V");
-        msg.channel.send("Do you feel proud with what you've done? :unamused:");
-    }
 }
 
 function displayProfile(msg, args){
