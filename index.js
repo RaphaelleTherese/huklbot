@@ -103,12 +103,12 @@ bot.on('message', msg=>{
     } else{
         console.log("empty");
     }
-    
+
     cmd = bot.commands.get("gulag");
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
     switch (args[0]){
          case "help":
-             cmd = bot.commands.get("help");
+             cmd = bot.commands.get(args[0]);
              cmd.run(bot, msg, args);
              break;
          case "bark":
