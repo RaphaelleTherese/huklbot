@@ -78,9 +78,12 @@ fs.readdir("./commands", (err, files) => {
 bot.on('message', msg=>{
      console.log(msg.author.username + ": " + msg.content.toLowerCase());
      var isAdmin = checkAdmin(msg);
-      
-     if (!msg.author.toString().includes("<@433479964097118208>") && !msg.author.toString().includes("<@282624296637956108>"))
-         recentAuthor = msg.author.toString(); // Retrieves the most recent 'author' of a message.
+    
+     if (!msg.author.toString().includes(huklbot))
+        return;
+        
+     if(!msg.author.toString().includes("<@282624296637956108>"))
+        recentAuthor = msg.author.toString(); // Retrieves the most recent 'author' of a message.
 
     // The bot obeys me UwU
     if (msg.content.toLowerCase().includes("<@433479964097118208>")){
