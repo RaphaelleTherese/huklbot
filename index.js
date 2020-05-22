@@ -98,12 +98,11 @@ bot.on('message', msg=>{
     let cmd = "";
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
-    if (!isEmpty(dictGulag)){
-        console.log("not empty");
-        cmd = bot.commands.get("gulag");
-        cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
+    if (isEmpty(dictGulag)){
+        console.log("empty");
     }
-
+    cmd = bot.commands.get("gulag");
+    cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
     switch (args[0]){
          case "help":
              cmd = bot.commands.get("help");
