@@ -17,7 +17,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     
     switch (args[0]){
         case "setsafeword":
-            setSafeword(bot, msg, args, isAdmin, word);
+            setSafeWord(bot, msg, args, isAdmin);
         break;
     }
     return [dictGulag, safeWord];
