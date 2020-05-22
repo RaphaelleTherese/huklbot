@@ -95,7 +95,16 @@ function removeFromGulag(bot, msg, args, isAdmin){
     if (isAdmin){
         const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
         const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
-            if (args.length > 1 && args[2].toString().includes("<@") && (args[2].length == 21 || args[2].length == 22)){ 
+            if(msg.author.id in dictGulag){
+                dictGulag[msg.member.id].forEach(function (roleId) {
+                    msg.member.roles.add(roleId);
+                });
+                msg.member.roles.remove(gulag);
+                delete dictGulag[msg.member.id];
+                msg.reply("<@" + msg.member.id + "> has been de-gulaged <:guilt:570001778372771853>");
+                bot.users.cache.get(msg.member.id).send("You've been de-gulaged :pensive:");
+                return;
+            } else if (args.length > 1 && args[2].toString().includes("<@") && (args[2].length == 21 || args[2].length == 22)){ 
                 var member = msg.mentions.members.first();
                 if (member.id in dictGulag){
                     dictGulag[member.id].forEach(function (roleId) {
@@ -109,16 +118,7 @@ function removeFromGulag(bot, msg, args, isAdmin){
                 }
                 msg.reply("They haven't even been gulaged yet <:what:456287851647336450>");
                 return;
-            } else if(msg.author.id in dictGulag){
-                dictGulag[msg.member.id].forEach(function (roleId) {
-                    msg.member.roles.add(roleId);
-                });
-                msg.member.roles.remove(gulag);
-                delete dictGulag[msg.member.id];
-                msg.reply("<@" + msg.member.id + "> has been de-gulaged <:guilt:570001778372771853>");
-                bot.users.cache.get(msg.member.id).send("You've been de-gulaged :pensive:");
-                return;
-            }
+            } 
         msg.reply("You have to provide a valid member to send to gulag! <:ss:456282514068340756>");
         return;
     }
