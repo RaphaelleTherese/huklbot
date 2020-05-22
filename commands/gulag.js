@@ -14,7 +14,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     if (cmd == "pester") {
         gulagify(bot, msg, args);
     } else{
-        switch (args[0]){
+        switch (args[1]){
             case "send":
                 sendToGulag(bot, msg, args, isAdmin);
                 break;
