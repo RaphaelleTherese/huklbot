@@ -99,7 +99,6 @@ bot.on('message', msg=>{
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
     cmd = bot.commands.get("gulag");
-    console.log(">IN 1: " + safeWord);
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
 
     switch (args[0]){
@@ -124,11 +123,13 @@ bot.on('message', msg=>{
             break;
         case "gulag":
             cmd = bot.commands.get(args[0]);
-            console.log(">IN 2: " + safeWord);
-            var results = cmd.run(bot, msg, args, isAdmin, "", dictGulag, safeWord);
-            dictGulag = results[0];
-            safeWord = results[1];
-            console.log(">OUT: " + results[1]);
+            dictGulag = cmd.run(bot, msg, args, isAdmin, "", dictGulag, safeWord);
+            break;
+        case "setsafeword":
+            if (isAdmin) {
+                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length + args[1].toString().length);
+                msg.reply(`The safe word has been set to ${safeWord}`);
+            }
             break;
         case "test":
             msg.reply("This command is reserved for testing purposes. :)");

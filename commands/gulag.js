@@ -6,11 +6,9 @@ const gulagRoleId = "504552560493854731";
 const gulagChannelId = "504553057560821780";
 
 var dictGulag = new Object();
-var safeWord = "safeWord";
 
 module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     dict = dictGulag;
-    safeWord = word;
     if (cmd == "pester") {
         gulagify(bot, msg, args, word);
     } else{
@@ -21,16 +19,12 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
             case "release":
                 removeFromGulag(bot, msg, args, isAdmin);
                 break;
-            case "safeword":
-                setSafeWord(bot, msg, args, isAdmin);
-                break;
             default:
-                msg.reply("What do you want me to do with gulag? `~gulag [send | release | safeword]`");
+                msg.reply("What do you want me to do with gulag? `~gulag [send | release]`");
                 break;
         }
     }
-    console.log(">BETWEEN: " + safeWord);
-    return [dictGulag, safeWord];
+    return dictGulag;
 };
 
 function sendToGulag(bot, msg, args, isAdmin){
@@ -131,12 +125,6 @@ function removeFromGulag(bot, msg, args, isAdmin){
     msg.reply("You must be an Admin to release the prisoner <:evil:573737708099338250>");
 }
 
-function setSafeWord(bot, msg, args, isAdmin){
-    if (isAdmin) {
-        safeWord = msg.content.substring(1 + 1 + args[0].toString().length + args[1].toString().length);
-        msg.reply(`The safe word has been set to ${safeWord}`);
-    }
-}
 module.exports.help = {
     name: "gulag"
 };
