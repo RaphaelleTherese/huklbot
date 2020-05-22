@@ -127,8 +127,8 @@ bot.on('message', msg=>{
             console.log(">IN 2: " + safeWord);
             var results = cmd.run(bot, msg, args, isAdmin, "", dictGulag, safeWord);
             dictGulag = results[0];
-            console.log(">OUT: " + safeWord);
             safeWord = results[1];
+            console.log(">OUT: " + safeWord);
             break;
         case "test":
             msg.reply("This command is reserved for testing purposes. :)");
