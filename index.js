@@ -98,7 +98,7 @@ bot.on('message', msg=>{
     let cmd = "";
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
-    if (Object.keys(dictGulag).length > 0){
+    if (!isEmpty(dictGulag)){
         console.log("not empty");
     } else{
         console.log("empty");
@@ -148,6 +148,10 @@ function checkAdmin(msg){
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
         return msg.member.roles.cache.some(r=>["Admin"].includes(r.name));
     return false;
+}
+
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
 }
 
 function annoy(msg, args){
