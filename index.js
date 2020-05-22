@@ -108,7 +108,7 @@ bot.on('message', msg=>{
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
     switch (args[0]){
          case "help":
-             cmd = bot.commands.get(args[0]);
+             cmd = bot.commands.get("help");
              cmd.run(bot, msg, args);
              break;
          case "bark":
@@ -128,7 +128,7 @@ bot.on('message', msg=>{
             displayProfile(msg, args);
             break;
         case "gulag":
-            cmd = bot.commands.get(args[0]);
+            cmd = bot.commands.get("gulag");
             dictGulag = cmd.run(bot, msg, args, isAdmin, "", dictGulag, safeWord);
             break;
         case "setsafeword":
