@@ -98,12 +98,14 @@ bot.on('message', msg=>{
     let cmd = "";
     let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
+    if (dictGulag.isEmpty()) console.log("empty");
     cmd = bot.commands.get("gulag");
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
 
     switch (args[0]){
          case "help":
-             help(msg, args);
+             cmd = bot.commands.get("help");
+             cmd.run(bot, msg, args);
              break;
          case "bark":
              if (recentAuthor != ""){
@@ -127,7 +129,7 @@ bot.on('message', msg=>{
             break;
         case "setsafeword":
             if (isAdmin) {
-                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length + args[1].toString().length);
+                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length);
                 msg.reply(`The safe word has been set to ${safeWord}`);
             }
             break;
@@ -137,28 +139,11 @@ bot.on('message', msg=>{
      }
 });
 
+/*----- COMMAND HELPERS -----*/
 function checkAdmin(msg){
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
         return msg.member.roles.cache.some(r=>["Admin"].includes(r.name));
     return false;
-}
-
-/*----- COMMAND HELPERS -----*/
-function help(msg, args){
-    if (args[1] == "me"){
-        msg.reply("You need all the help you can get :unamused:");
-    } else{
-      const embed = new Discord.MessageEmbed()
-      .setTitle('__COMMANDS__')
-      .setColor('#b72025')
-      .setDescription('Listen to me you little shit, here are your fucking commands, happy now?\n\n ' + 
-      '`help` Dumbass, you just used this \n ' + 
-      '`bark`\tWoof woof, motherfucker')
-      .addField('profile', 'View your profile')
-      .addField('command', 'command description');
-
-      msg.channel.send(embed);
-    }
 }
 
 function annoy(msg, args){
