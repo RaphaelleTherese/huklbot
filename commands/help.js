@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const api = require('imageapi.js');
 
 const guildId = "456235847529005078"; // The server
