@@ -18,10 +18,10 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
             case "send":
                 sendToGulag(bot, msg, args, isAdmin);
                 break;
-            case "remove":
+            case "release":
                 removeFromGulag(bot, msg, args, isAdmin);
                 break;
-            case "setsafeword":
+            case "safeword":
                 setSafeWord(bot, msg, args, isAdmin);
                 break;
             default:
