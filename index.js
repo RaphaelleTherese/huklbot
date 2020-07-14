@@ -63,7 +63,7 @@ fs.readdir("./commands", (err, files) => {
 });
 
 var conn = mysql.createConnection({
-    host: "localhost",
+    host: "localhost:9090",
     user: "ZingboxBot",
     password: "tiger25",
     database: "zingboxdiscord"
