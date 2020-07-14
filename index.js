@@ -188,4 +188,4 @@ function displayProfile(msg, args){
 }
 
 bot.login(process.env.token);
-// bot.login(token);
+// bot.login(token); 
