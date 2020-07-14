@@ -96,7 +96,10 @@ bot.on('message', msg=>{
 
     // --- OFFICIAL COMMANDS ---
     let cmd = "";
-    let args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
+    let args = "";
+
+    if (msg.content.substring(0,PREFIX.length) == PREFIX)
+        args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
     cmd = bot.commands.get("gulag");
     cmd.run(bot, msg, args, isAdmin, "pester", dictGulag, safeWord);
