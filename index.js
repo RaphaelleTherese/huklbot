@@ -62,19 +62,6 @@ fs.readdir("./commands", (err, files) => {
     });
 });
 
-var conn = mysql.createConnection({
-    host: "localhost:9090",
-    user: "ZingboxBot",
-    password: "tiger25",
-    database: "zingboxdiscord"
-});
-
-conn.connect(err => {
-    if (err) throw err;
-    console.log("Connected to database");
-})
-console.log("where she at");
-
 // On member arrival
 bot.on('guildMemberAdd', member => {
     // Send the message to a designated channel on a server:
