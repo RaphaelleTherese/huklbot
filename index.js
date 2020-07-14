@@ -37,6 +37,8 @@ const guild = bot.guilds.cache.get("456235847529005078"); // The server
 const gulagRoleId = "504552560493854731";
 const gulagChannelId = "504553057560821780";
 
+const token = "NDMzNDc5OTY0MDk3MTE4MjA4.Xw0uxg.nR7xhaCEb8-orHXk71lMkqVPe-Y";
+
 // Hey, is this thing on? 
 bot.on('ready', () =>{
     console.log("---------- Teehee, I'm hewe! UwU ----------");
@@ -98,6 +100,7 @@ bot.on('message', msg=>{
     let cmd = "";
     let args = "";
 
+    console.log(msg.content.substring(0,PREFIX.length));
     if (msg.content.substring(0,PREFIX.length) == PREFIX)
         args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
