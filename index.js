@@ -30,7 +30,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require("fs");
 const mysql = require("mysql");
-// const token = 'NDMzNDc5OTY0MDk3MTE4MjA4.Xn25-A.AejV_FMOQtZCZegt9OKK2bbq48w';
 
 const PREFIX = "~";
 const huklbot = "<@433479964097118208>"; // Huklbot's role
