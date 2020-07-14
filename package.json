@@ -17,6 +17,7 @@
     "discord.js": "^12.0.2",
     "fs": "0.0.1-security",
     "imageapi.js": "^1.0.3",
+    "mysql": "^2.18.1",
     "random-puppy": "^1.1.0"
   }
 }

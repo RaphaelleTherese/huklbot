@@ -29,10 +29,10 @@ guild.roles.cache.forEach(role => console.log(role.name, role.id)) -- Retrieve a
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require("fs");
+const mysql = require("mysql");
 // const token = 'NDMzNDc5OTY0MDk3MTE4MjA4.Xn25-A.AejV_FMOQtZCZegt9OKK2bbq48w';
+
 const PREFIX = "~";
-
-
 const huklbot = "<@433479964097118208>"; // Huklbot's role
 const guild = bot.guilds.cache.get("456235847529005078"); // The server
 const gulagRoleId = "504552560493854731";
@@ -46,17 +46,6 @@ bot.on('ready', () =>{
 var recentAuthor = "";
 var dictGulag = new Object();
 var safeWord = "safe word";
-
-bot.on('guildMemberAdd', member => {
-    // Send the message to a designated channel on a server:
-    const channel = member.guild.channels.cache.find(ch => ch.name === 'lobby');
-    // Do nothing if the channel wasn't found on this server
-    if (!channel) return;
-    // Send the message, mentioning the member
-    var addIntro = ["Welcome to hell :eye: :lips: :eye:,", ":eye: :lips: :eye: Hope your ass cheeks are wide open ", "Leave before it's too late :eye: :lips: :eye:"];
-    var randInt = parseInt((Math.random() * addIntro.length));
-    channel.send(addIntro[randInt] + `${member}`);
-});
 
 // Load commands
 bot.commands = new Discord.Collection();
@@ -72,6 +61,30 @@ fs.readdir("./commands", (err, files) => {
         console.log(`${i + 1}: ${f} loaded!`);
         bot.commands.set(props.help.name, props);
     });
+});
+
+var conn = mysql.createConnection({
+    host: "localhost",
+    user: "ZingboxBot",
+    password: "tiger25",
+    database: "zingboxdiscord"
+});
+
+conn.connect(err => {
+    if (err) throw err;
+    console.log("Connected to database");
+})
+
+// On member arrival
+bot.on('guildMemberAdd', member => {
+    // Send the message to a designated channel on a server:
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'lobby');
+    // Do nothing if the channel wasn't found on this server
+    if (!channel) return;
+    // Send the message, mentioning the member
+    var addIntro = ["Welcome to hell :eye: :lips: :eye:,", ":eye: :lips: :eye: Hope your ass cheeks are wide open ", "Leave before it's too late :eye: :lips: :eye:"];
+    var randInt = parseInt((Math.random() * addIntro.length));
+    channel.send(addIntro[randInt] + `${member}`);
 });
 
 // Message event
