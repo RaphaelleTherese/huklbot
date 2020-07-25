@@ -100,7 +100,6 @@ bot.on('message', msg=>{
     let cmd = "";
     let args = "";
 
-    console.log(msg.content.substring(0,PREFIX.length));
     if (msg.content.substring(0,PREFIX.length) == PREFIX)
         args = msg.content.substring(PREFIX.length).toLowerCase().split(" ");
 
