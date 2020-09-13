@@ -67,18 +67,18 @@ const gulagChannelId = "504553057560821780";
 const token = "NDMzNDc5OTY0MDk3MTE4MjA4.Xw0uxg.nR7xhaCEb8-orHXk71lMkqVPe-Y";
 
 /*----- CONNECT TO DATABSE -----*/
-var conn = mysql.createConnection({
-    host: "localhost",
-    user: "root", 
-    password: "ZingBox25HUK!", 
-    database: "notitiacentrum"
-});
+// var conn = mysql.createConnection({
+//     host: "localhost",
+//     user: "root", 
+//     password: "ZingBox25HUK!", 
+//     database: "notitiacentrum"
+// });
 
-conn.connect(err => {
-    if(err) throw err;
+// conn.connect(err => {
+//     if(err) throw err;
 
-    console.log("Connected to database! OwO");
-});
+//     console.log("Connected to database! OwO");
+// });
 
 // Hey, is this thing on? 
 bot.on('ready', () =>{
