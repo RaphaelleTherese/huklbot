@@ -167,13 +167,19 @@ bot.on('message', async msg=>{
             } else if(isAdmin && args[1].toString() == "everyone") {
                 if (msg.content.substring(PREFIX.length + args[1].length).length > 0){
                     const guild = bot.guilds.cache.get("456235847529005078");
-                    guild.members.cache.forEach(async function(member) {
 
+                    guild.members.cache.forEach(async function(member) {
+                        try {
+                            
                         user = new Discord.GuildMember(bot, member, guild);
                         
                         setTimeout(function(){
                             bot.users.cache.get(member.user.id).send(member.user.username + ", " + msg.content.substring(1 + PREFIX.length + args[0].toString().length + args[1].toString().length) + " - " + msg.author.toString())
-                        }, 500); 
+                        }, 1000); 
+                          }
+                          catch(err) {
+                            console.log(err);
+                          }
 
                     });
                 }
