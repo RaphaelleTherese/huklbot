@@ -9,7 +9,7 @@ var dictGulag = new Object();
 
 module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
     dict = dictGulag;
-    word = word.ToLowerCase();
+    word = word.toLowerCase();
     if (cmd == "pester") {
         gulagify(bot, msg, args, word);
     } else{
