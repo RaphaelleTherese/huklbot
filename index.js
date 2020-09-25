@@ -201,7 +201,7 @@ bot.on('message', async msg=>{
             break;
         case "setsafeword":
             if (isAdmin) {
-                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length);
+                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length).toLowerCase();
                 msg.reply(`The safe word has been set to ${safeWord}`);
             }
             break;
