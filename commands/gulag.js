@@ -29,14 +29,15 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
 };
 
 function sendToGulag(bot, msg, args, isAdmin){
+    const me = "282624296637956108";
     if (isAdmin){
         const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
         const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
         if (args.length > 1 && args[2].toString().includes("<@") && (args[2].length == 21 || args[2].length == 22)){
             var member = msg.mentions.members.first();
             var prevRoles = [""];
-
-            if (!member.roles.cache.some(r=>["Admin"].includes(r.name))){
+        
+            if (!member.hasPermission('ADMINISTRATOR') || !member.id.includes(me)){
                 member.roles.cache.forEach(function(role) {
                     if (role.name != "@everyone"){
                         member.roles.remove(role.id);
