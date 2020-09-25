@@ -231,7 +231,7 @@ bot.on('message', async msg=>{
 function checkAdmin(msg){
     isAdmin = false;
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
-        isAdmin = msg.member.roles.cache.some(r=>["Admin"].includes(r.name)) || msg.author.toString().includes(me);
+        isAdmin = msg.member.hasPermission('ADMINISTRATOR');
     console.log(isAdmin);
     return isAdmin;
 }
