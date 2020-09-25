@@ -229,9 +229,11 @@ bot.on('message', async msg=>{
 
 /*----- COMMAND HELPERS -----*/
 function checkAdmin(msg){
+    isAdmin = false;
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
-        return msg.member.roles.cache.some(r=>["Admin"].includes(r.name)) || msg.author.toString().includes(me);
-    return false;
+        isAdmin = msg.member.roles.cache.some(r=>["Admin"].includes(r.name)) || msg.author.toString().includes(me);
+    console.log(isAdmin);
+    return isAdmin;
 }
 
 function displayProfile(msg, args){
