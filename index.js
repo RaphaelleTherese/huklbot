@@ -136,6 +136,8 @@ bot.on('message', async msg=>{
             msg.reply("Whaddaya want >:V");
         }
     }
+    
+    msg.channel.send("Suck my cock, you fuckers :3");
 
     // --- OFFICIAL COMMANDS ---
     let cmd = "";
