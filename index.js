@@ -137,7 +137,7 @@ bot.on('message', async msg=>{
         }
     }
     
-    msg.channel.send("Suck my cock, you fuckers :3");
+    // msg.channel.send("Suck my cock, you fuckers :3");
 
     // --- OFFICIAL COMMANDS ---
     let cmd = "";
