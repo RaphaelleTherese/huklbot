@@ -230,7 +230,7 @@ bot.on('message', async msg=>{
 /*----- COMMAND HELPERS -----*/
 function checkAdmin(msg){
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
-        return msg.member.roles.cache.some(r=>["Admin"].includes(r.name)) || msg.memberId == msg.author.toString().includes(me);
+        return msg.member.roles.cache.some(r=>["Admin"].includes(r.name)) || msg.author.toString().includes(me);
     return false;
 }
 
