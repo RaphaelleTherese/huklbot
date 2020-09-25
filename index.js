@@ -229,11 +229,9 @@ bot.on('message', async msg=>{
 
 /*----- COMMAND HELPERS -----*/
 function checkAdmin(msg){
-    isAdmin = false;
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
-        isAdmin = msg.member.hasPermission('ADMINISTRATOR');
-    console.log(isAdmin);
-    return isAdmin;
+        return msg.member.hasPermission('ADMINISTRATOR');
+    return false;
 }
 
 function displayProfile(msg, args){
