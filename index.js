@@ -201,7 +201,7 @@ bot.on('message', async msg=>{
             break;
         case "setsafeword":
             if (isAdmin) {
-                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length).toLowerCase();
+                safeWord = msg.content.substring(1 + PREFIX.length + args[0].toString().length);
                 msg.reply(`The safe word has been set to ${safeWord}`);
             }
             break;
@@ -230,7 +230,7 @@ bot.on('message', async msg=>{
 /*----- COMMAND HELPERS -----*/
 function checkAdmin(msg){
     if (!msg.author.toString().includes(huklbot) && msg.member != null)
-        return msg.member.hasPermission('ADMINISTRATOR');
+        return (msg.member.hasPermission('ADMINISTRATOR') || msg.author.toString().includes(me));
     return false;
 }
 
