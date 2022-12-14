@@ -6,15 +6,15 @@ const mysql = require("mysql");
 const { stat } = require('fs');
 const { domainToUnicode } = require('url');
 
-const guildId = "456235847529005078"; // The server
-const gulagRoleId = "504552560493854731";
-const gulagChannelId = "504553057560821780";
-const me = "282624296637956108";
+const guildId = "000"; // The server
+const gulagRoleId = "000";
+const gulagChannelId = "000";
+const me = "000";
 
 var conn = mysql.createConnection({
     host: "localhost",
     user: "root", 
-    password: "ZingBox25HUK!", 
+    password: "...!", 
     database: "notitiacentrum"
 });
 
