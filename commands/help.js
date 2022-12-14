@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const api = require('imageapi.js');
 
-const guildId = "456235847529005078"; // The server
-const gulagRoleId = "504552560493854731";
-const gulagChannelId = "504553057560821780";
+const guildId = "000"; // The server
+const gulagRoleId = "000";
+const gulagChannelId = "000";
 
 module.exports.run = async(bot, msg, args) => {
     if (args[1] == "me"){
