@@ -1,9 +1,9 @@
 const discord = require('discord.js');
 const api = require('imageapi.js');
 
-const guildId = "456235847529005078"; // The server
-const gulagRoleId = "504552560493854731";
-const gulagChannelId = "504553057560821780";
+const guildId = "000"; // The server
+const gulagRoleId = "000";
+const gulagChannelId = "000";
 
 var dictGulag = new Object();
 
@@ -29,7 +29,7 @@ module.exports.run = async(bot, msg, args, isAdmin, cmd, dict, word) => {
 };
 
 function sendToGulag(bot, msg, args, isAdmin){
-    const me = "282624296637956108";
+    const me = "000";
     if (isAdmin){
         const gulag = msg.guild.roles.cache.get(gulagRoleId); // Gulag role
         const gulagChannel = msg.guild.channels.cache.find(ch => ch.id === gulagChannelId); // Gulag channel
