@@ -43,8 +43,6 @@ Daily Bingo Cards (collecting organs) gets you certain perks (temporary boosts?)
 
 
 ------ USER @s -----
-<@433479964097118208> = HuklBot
-<@282624296637956108> = Huklpopz [Me]
 
 Notes:
 guild.roles.cache.forEach(role => console.log(role.name, role.id)) -- Retrieve all roles in the server
@@ -70,7 +68,6 @@ const token = "NDMzNDc5OTY0MDk3MTE4MjA4.Xw0uxg.nR7xhaCEb8-orHXk71lMkqVPe-Y";
 // var conn = mysql.createConnection({
 //     host: "localhost",
 //     user: "root", 
-//     password: "ZingBox25HUK!", 
 //     database: "notitiacentrum"
 // });
 
@@ -126,7 +123,6 @@ bot.on('message', async msg=>{
      if (msg.author.bot) return;
      if (msg.channel.type == "dm") return;
      if(!msg.author.toString().includes(me)) recentAuthor = msg.author.toString(); // Retrieves the most recent 'author' of a message.
-    // if (msg.author.toString().includes("271065194438852618")) msg.channel.send("");
 
     // The bot obeys me UwU
     if (msg.content.toLowerCase().includes(huklbot)){
