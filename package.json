@@ -2,7 +2,7 @@
   "name": "bot",
   "version": "1.0.0",
   "description": " ",
-  "main": " ",
+  "main": "index.js",
   "scripts": {
     "test": " "
   },
@@ -14,15 +14,16 @@
   "author": "Me",
   "license": "UNLICENSED",
   "dependencies": {
-    "@discordjs/voice": "^0.16.0",
-    "discord.js": "^12.5.3",
+    "discord.js": "^14.9.0",
     "ffmpeg": "^0.0.4",
     "fs": "0.0.1-security",
     "imageapi.js": "^1.0.3",
-    "mysql": "^2.18.1",
-    "random-puppy": "^1.1.0"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "eslint": "^8.38.0"
+  },
+  "overrides": {
+    "got": "^12.1.0"
   }
 }
