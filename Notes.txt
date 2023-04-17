@@ -1,0 +1,45 @@
+
+node . to turn on 
+
+*IDEAS
+~insult: insults a random person on the server with a random insult
+~organ battle, instead of pet teams and such; sell to the black market; 
+    Maybe higher ranking, better worth
+~shuffle: channel shuffle
+~distort: makes everything weird
+~gulagify: sends user to gulag, can only be used by admin
+
+black market
+specialize in certain people, ex. majesty is rarer
+organize myorgans display
+collect the people -- something special? 
+
+coins and xp system? get items like butt plugs, orca dildos
+
+collect items and 
+
+obscure currencies
+
+quest - bingo cards: randomly generated each day. Gotta collect 
+
+Rankings determined by how many times someone's talked, and have
+names such as:
+Baby Hippo
+Turd Burglar
+Baby Snatcher
+etc
+
+Selling to the blackmarket puts the organs into their own place? Freezer? Storage? Devalues them? Harder to get back? 
+
+Currency? - Buy things
+
+Build your own prostitution circle? 
+Feeding your pet organs lets them 
+
+Daily Bingo Cards (collecting organs) gets you certain perks (temporary boosts?)
+
+
+------ USER @s -----
+
+Notes:
+guild.roles.cache.forEach(role => console.log(role.name, role.id)) -- Retrieve all roles in the server

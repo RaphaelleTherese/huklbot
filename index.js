@@ -1,54 +1,3 @@
-/*
-Author: Raphaelle Guinanao
-Last Updated: May 20, 2020
-
-node . to turn on 
-
-*IDEAS
-~insult: insults a random person on the server with a random insult
-~organ battle, instead of pet teams and such; sell to the black market; 
-    Maybe higher ranking, better worth
-~shuffle: channel shuffle
-~distort: makes everything weird
-~gulagify: sends user to gulag, can only be used by admin
-
-black market
-specialize in certain people, ex. majesty is rarer
-organize myorgans display
-collect the people -- something special? 
-
-coins and xp system? get items like butt plugs, orca dildos
-
-collect items and 
-
-obscure currencies
-
-quest - bingo cards: randomly generated each day. Gotta collect 
-
-Rankings determined by how many times someone's talked, and have
-names such as:
-Baby Hippo
-Turd Burglar
-Baby Snatcher
-etc
-
-Selling to the blackmarket puts the organs into their own place? Freezer? Storage? Devalues them? Harder to get back? 
-
-Currency? - Buy things
-
-Build your own prostitution circle? 
-Feeding your pet organs lets them 
-
-Daily Bingo Cards (collecting organs) gets you certain perks (temporary boosts?)
-
-
------- USER @s -----
-
-Notes:
-guild.roles.cache.forEach(role => console.log(role.name, role.id)) -- Retrieve all roles in the server
-
-*/
-
 /*----- GLOBAL VARIABLES-----*/
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -62,7 +11,7 @@ const guild = bot.guilds.cache.get("456235847529005078"); // The server
 const gulagRoleId = "504552560493854731";
 const gulagChannelId = "504553057560821780";
 
-const token = "NDMzNDc5OTY0MDk3MTE4MjA4.Xw0uxg.nR7xhaCEb8-orHXk71lMkqVPe-Y";
+const token = "";
 
 /*----- CONNECT TO DATABSE -----*/
 // var conn = mysql.createConnection({
@@ -117,7 +66,7 @@ var safeWord = "safe word";
 
 // Message event
 bot.on('message', async msg=>{
-     console.log(msg.author.username + ": " + msg.content.toString().toLowerCase());
+     console.log(msg.author.username + ": ");
      var isAdmin = checkAdmin(msg);
     
      if (msg.author.bot) return;
@@ -249,4 +198,4 @@ function suggest(msg, args) {
 }
 
 // bot.login(process.env.token);
-bot.login(token); 
+bot.login(token);
