@@ -16,3 +16,15 @@ all organs of a member) they've acquired in relation to others.
 3) help -- lists all functionalities of all commands
 4) bark -- barks at the user
 5) annoy -- given the user is an admin, individually dms EVERY user in the server a given message
+
+## === some fun moments captured ===
+![image](https://github.com/RaphaelleTherese/huklbot/assets/48529149/ba3d707a-16d7-4cde-9d2f-60d9c1d08b02)
+
+![image](https://github.com/RaphaelleTherese/huklbot/assets/48529149/b8106fa2-2a36-4c7c-98c3-f234698a2c50)
+
+![image](https://github.com/RaphaelleTherese/huklbot/assets/48529149/8c1dbfa9-1f01-4fed-8ee5-7ef10c26d641)
+
+![image](https://github.com/RaphaelleTherese/huklbot/assets/48529149/c0f21087-6060-45c4-880c-8cd8b92713c2)
+
+![image](https://github.com/RaphaelleTherese/huklbot/assets/48529149/d2762831-6ffc-41cb-ad97-53d514261461)
+
